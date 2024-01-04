@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for sswedding on 2023-10-09T19:39:04-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "sswedding"
+primary_region = "atl"
+
+[env]
+PORT = "4000"
+DATABASE_PATH = "/mnt/sswedding/core.db"
+
+[http_service]
+internal_port = 4000
+force_https = true
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 0
+processes = ["app"]
+
+[mounts]
+source = "sswedding"
+destination = "/mnt/sswedding"
